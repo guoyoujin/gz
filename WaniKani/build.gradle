@@ -1,0 +1,75 @@
+apply plugin: 'android'
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.0.0'
+    }
+}
+android {
+    compileSdkVersion 21
+    buildToolsVersion '20.0.0'
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 21
+        versionCode 8
+        versionName "1.1.1"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            resources.srcDirs = ['src']
+            aidl.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+            res.srcDirs = ['res']
+            assets.srcDirs = ['assets']  \
+
+        }
+
+        instrumentTest.setRoot('tests')
+
+        debug.setRoot('build-types/debug')
+        release.setRoot('build-types/release')
+    }
+
+    repositories {
+        maven {
+            url 'https://github.com/toxbee/mvn-repo/raw/master/maven-deploy'
+        }
+        flatDir {
+            dirs 'libs'
+        }
+        mavenCentral()
+    }
+
+    dependencies {
+        // compile fileTree(dir: 'libs', include: '*.jar')
+        compile 'com.android.support:support-v4:+'
+        compile 'com.android.support:support-v13:+'
+        compile 'com.android.support:appcompat-v7:+'
+        compile 'com.android.support:cardview-v7:+'
+        compile 'com.tonicartos:stickygridheaders:+'
+        compile 'com.squareup.retrofit:retrofit:+'
+        compile 'com.squareup.picasso:picasso:+'
+        compile files('libs/commons-io-2.4.jar')
+        compile files('libs/commons-lang3-3.3.1.jar')
+    }
+}

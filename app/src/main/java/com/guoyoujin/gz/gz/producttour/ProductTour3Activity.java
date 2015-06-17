@@ -19,7 +19,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.guoyoujin.gz.gz.R;
-import com.guoyoujin.gz.gz.activity.ContentActivity;
+import com.guoyoujin.gz.gz.activity.MainActivity;
 import com.nineoldandroids.view.ViewHelper;
 
 
@@ -149,7 +149,7 @@ public class ProductTour3Activity extends AppCompatActivity {
     }
  
     private void endTutorial(){
-        startActivity(new Intent(ProductTour3Activity.this, ContentActivity.class));
+        startActivity(new Intent(ProductTour3Activity.this, MainActivity.class));
         finish();
         overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
     }
