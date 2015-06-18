@@ -16,4 +16,25 @@
     <string name="title_activity_content">ContentActivity</string>
     <string name="drawer_open">Menu opened</string>
     <string name="drawer_close">Menu closed</string>
+
+
+    <string name="demo_tab_1">新 闻</string>
+    <string name="demo_tab_2">便 民</string>
+    <string name="demo_tab_3">社 区</string>
+    <string name="demo_tab_4">美 食</string>
+    <string name="demo_tab_5">娱 乐</string>
+    <string name="demo_tab_6">电 影</string>
+    <string name="demo_tab_7">房 产</string>
+    <string name="demo_tab_8">汽 车</string>
+
+
+    <string-array name="nav_drawer_items">
+        <item>新闻资讯</item>
+        <item>公交助手</item>
+        <item>苏州天气</item>
+        <item>宅男女神</item>
+        <item>私人小秘</item>
+        <item>金山彩票</item>
+    </string-array>
+
 </resources>

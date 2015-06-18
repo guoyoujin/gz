@@ -11,8 +11,13 @@
     <dimen name="welcome_content_min_height">96.0dip</dimen>
     <dimen name="welcome_content">16.0sp</dimen>
 
+
     <!-- Per the design guidelines, navigation drawers should be between 240dp and 320dp:
          https://developer.android.com/design/patterns/navigation-drawer.html -->
     <dimen name="navigation_drawer_width">240dp</dimen>
     <dimen name="toolbar_elevation">4dp</dimen>
+
+    <!-- fragmnt_tab text size and tab_hight  -->
+    <dimen name="fragment_news_tab_text">14.0sp</dimen>
+    <dimen name="tab_height">48dp</dimen>
 </resources>

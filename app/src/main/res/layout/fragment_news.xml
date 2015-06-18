@@ -3,89 +3,32 @@
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true">
-
-    <View
-        android:id="@+id/vocabulary_actionbar_header"
+    <com.ogaclejapan.smarttablayout.SmartTabLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/viewpagertab"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="@color/apptheme_actionbar" />
-
-    <ViewFlipper
-        android:id="@+id/vocabulary_list_flipper"
-        android:layout_width="fill_parent"
+        android:layout_height="@dimen/tab_height"
+        android:clipToPadding="false"
+        android:paddingBottom="8dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:background="@color/apptheme_actionbar"
+        app:stl_defaultTabTextColor="@color/white"
+        app:stl_defaultTabTextSize="@dimen/fragment_news_tab_text"
+        app:stl_defaultTabTextHorizontalPadding="20dp"
+        app:stl_dividerColor="@color/transparent"
+        app:stl_dividerThickness="0dp"
+        app:stl_indicatorColor="@color/black_20"
+        app:stl_indicatorCornerRadius="20dp"
+        app:stl_indicatorInterpolation="smart"
+        app:stl_indicatorThickness="40dp"
+        app:stl_underlineColor="@color/transparent"
+        app:stl_underlineThickness="0dp"
+        />
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:inAnimation="@anim/abc_fade_in"
-        android:outAnimation="@anim/abc_fade_out">
-
-        <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center" />
-
-        <ViewFlipper
-            android:id="@+id/vocabulary_message_flipper"
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:inAnimation="@anim/abc_fade_in"
-            android:outAnimation="@anim/abc_fade_out"
-            android:paddingBottom="2dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:animateLayoutChanges="true">
-
-
-            </RelativeLayout>
-
-            <android.support.v4.widget.SwipeRefreshLayout
-                android:id="@+id/vocabulary_message_swipe_refresh"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="48dp">
-
-                <ScrollView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content">
-
-                    <LinearLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:id="@+id/vocabulary_message_icon"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="16dp" />
-
-                        <TextView
-                            android:id="@+id/vocabulary_message_title"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginBottom="8dp"
-                            android:textAppearance="@android:style/TextAppearance.Medium"
-                            android:textColor="@color/text_gray" />
-
-                        <TextView
-                            android:id="@+id/vocabulary_message_summary"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginBottom="8dp"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp"
-                            android:textColor="@color/text_gray" />
-                    </LinearLayout>
-                </ScrollView>
-            </android.support.v4.widget.SwipeRefreshLayout>
-        </ViewFlipper>
-    </ViewFlipper>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:layout_below="@+id/vocabulary_actionbar_header"
-        android:background="@drawable/gradient_actionbar" />
+        android:layout_below="@id/viewpagertab"
+        />
 </RelativeLayout>

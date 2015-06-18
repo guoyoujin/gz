@@ -1,31 +1,29 @@
 package com.guoyoujin.gz.gz.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.ViewFlipper;
-
 import com.guoyoujin.gz.gz.R;
+import com.guoyoujin.gz.gz.fragment.tabfragment.Fragment1;
+import com.ogaclejapan.smarttablayout.SmartTabLayout;
+import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
+import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
+import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 
 /**
  * Created by guoyoujin on 15/6/17.
  */
-public class NewsFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
+public class NewsFragment extends Fragment{
     View rootView;
-    TextView mMessageTitle;
-    TextView mMessageSummary;
-    ImageView mMessageIcon;
-    ViewFlipper mMessageFlipper;
-    ViewFlipper mListFlipper;
-    private SwipeRefreshLayout mMessageSwipeRefreshLayout;
+    SmartTabLayout viewpagertab;
+    ViewPager viewpager;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,17 +34,21 @@ public class NewsFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_news, container, false);
-        mMessageSwipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.vocabulary_message_swipe_refresh);
-        mMessageSwipeRefreshLayout.setOnRefreshListener(this);
-        mMessageSwipeRefreshLayout.setColorSchemeResources(R.color.swipe_refresh);
-        mListFlipper = (ViewFlipper) rootView.findViewById(R.id.vocabulary_list_flipper);
-        mMessageFlipper = (ViewFlipper) rootView.findViewById(R.id.vocabulary_message_flipper);
-        mMessageIcon = (ImageView) rootView.findViewById(R.id.vocabulary_message_icon);
-        mMessageTitle = (TextView) rootView.findViewById(R.id.vocabulary_message_title);
-        mMessageSummary = (TextView) rootView.findViewById(R.id.vocabulary_message_summary);
+        initView(rootView);
         return rootView;
     }
-
+    public void initView(View view){
+        viewpagertab = (SmartTabLayout)view.findViewById(R.id.viewpagertab);
+        viewpager = (ViewPager)view.findViewById(R.id.viewpager);
+        FragmentPagerItems pages = new FragmentPagerItems(getActivity());
+        Demo demo=new Demo();
+        for (int titleResId : demo.tabs()) {
+            pages.add(FragmentPagerItem.of(getActivity().getString(titleResId), Fragment1.class));
+        }
+        FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(getActivity().getSupportFragmentManager(), pages);
+        viewpager.setAdapter(adapter);
+        viewpagertab.setViewPager(viewpager);
+    }
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
@@ -57,8 +59,8 @@ public class NewsFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         super.onPrepareOptionsMenu(menu);
     }
 
-    @Override
-    public void onRefresh() {
+
+    public static void startActivity(Context context) {
 
     }
 }
