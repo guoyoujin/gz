@@ -102,4 +102,11 @@
     <color name="white">#FFFFFFFF</color>
     <color name="black_20">#33000000</color>
     <color name="transparent">#00000000</color>
+
+    <color name="light_gray_text">#949494</color>
+    <color name="red">#fa3e36</color>
+    <color name="new_tex_content">#676564</color>
+    <color name="menu_bottom_bg">#f9f9f9</color>
+    <color name="black">#000000</color>
+
 </resources>

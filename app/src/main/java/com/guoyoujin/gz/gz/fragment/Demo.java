@@ -9,6 +9,7 @@ public class Demo {
         R.string.demo_tab_1,
         R.string.demo_tab_2,
         R.string.demo_tab_3,
+        R.string.demo_tab_4,
         R.string.demo_tab_5,
         R.string.demo_tab_6,
         R.string.demo_tab_7,

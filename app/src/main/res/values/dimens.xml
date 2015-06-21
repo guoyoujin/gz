@@ -20,4 +20,10 @@
     <!-- fragmnt_tab text size and tab_hight  -->
     <dimen name="fragment_news_tab_text">14.0sp</dimen>
     <dimen name="tab_height">48dp</dimen>
+
+    <drawable name="button_unpressed">#00000000</drawable>
+    <drawable name="button_pressed">#45000000</drawable>
+
+    <drawable name="view_unpressed">#00000000</drawable>
+    <drawable name="view_pressed">#22000000</drawable>
 </resources>

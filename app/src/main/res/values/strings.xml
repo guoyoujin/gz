@@ -37,4 +37,26 @@
         <item>金山彩票</item>
     </string-array>
 
+
+    <!-- Card Content (Critical Items) Strings -->
+    <string name="card_content_critical_no_items_title">You\'re good!</string>
+    <string name="card_content_critical_no_items_summary">Looks like you are good in your studies. All items are healthy. Well, for now...</string>
+
+    <!-- Card Content (Recent Unlocks) Strings -->
+    <string name="card_content_unlocks_no_items_title">Work harder!</string>
+    <string name="card_content_unlocks_no_items_summary">Nothing unlocked recently. You might want to get done with your current studies in order to unlock more...</string>
+    <!-- Radicals Fragment Strings -->
+    <string name="content_radicals_legend">Legend</string>
+    <string name="content_radicals_legend_active">Active</string>
+    <string name="content_radicals_legend_burned">Burned</string>
+    <string name="content_radicals_legend_locked">Locked</string>
+    <string name="no_items_summary">"No items available. You probably haven't reached this level or there is a connection issue."</string>
+    <string name="no_items_title">No items!</string>
+
+    <!-- Progress Fragment Strings -->
+    <string name="card_title_remaining_radicals">Remaining Radicals</string>
+    <string name="card_title_remaining_kanji">Remaining Kanji</string>
+    <string name="error_loading_items">Couldn\'t load items :(</string>
+
+
 </resources>

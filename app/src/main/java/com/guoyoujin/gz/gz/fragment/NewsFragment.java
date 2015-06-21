@@ -24,7 +24,7 @@ public class NewsFragment extends Fragment{
     View rootView;
     SmartTabLayout viewpagertab;
     ViewPager viewpager;
-
+    int[] chnanelId={ 5, 18, 27, 37, 21, 36, 23, 24 };
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
