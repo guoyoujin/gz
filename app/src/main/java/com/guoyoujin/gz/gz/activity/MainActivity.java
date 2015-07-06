@@ -1,8 +1,8 @@
 package com.guoyoujin.gz.gz.activity;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -17,10 +17,14 @@ import com.guoyoujin.gz.gz.toolbar.NavigationDrawerCallbacks;
 import com.guoyoujin.gz.gz.toolbar.NavigationDrawerFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationDrawerCallbacks {
-
+    private FragmentManager fragmentManager;
+    private FragmentTransaction transaction;
     private Toolbar mToolbar;
     private NavigationDrawerFragment mNavigationDrawerFragment;
     private static CharSequence mTitle;
+    private NewsFragment newsFragment = null;
+    private WeatherFragment weatherFragment = null;
+    private GoddessFragment goddessFragment = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,28 +56,26 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
     public void onNavigationDrawerItemSelected(int position) {
         Toast.makeText(this, "Menu item selected -> " + position, Toast.LENGTH_SHORT).show();
 //        mToolbar.setTitle("Menu item selected -> " + position);
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        Fragment fragment = null;
+        initFragmentTrans();
         switch (position){
             case 0:
-                fragment = new NewsFragment();
-                mTitle = "NewsFragment";
-                break;
+               initNewsFragment();
+               mTitle = "NewsFragment";
+               break;
             case 1:
-                fragment = new WeatherFragment();
-                mTitle = "Weather";
-                break;
-            case 3:
-                fragment = new GoddessFragment();
+               initWeatherFragment();
+               mTitle = "Weather";
+               break;
+            case 2:
+                initGoddessFragment();
                 mTitle = "Goddess";
                 break;
-            case 4:
+            case 3:
                 break;
             default:
 
         }
-        if (fragment != null)
-            fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
+
     }
 
     @Override
@@ -83,4 +85,73 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
         else
             super.onBackPressed();
     }
+    public void initFragmentTrans(){
+        if(fragmentManager == null){
+            fragmentManager = getSupportFragmentManager();
+        }
+        if(transaction == null){
+            transaction = fragmentManager.beginTransaction();
+        }
+    }
+    public void initNewsFragment(){
+        if(newsFragment == null) {
+            newsFragment = new NewsFragment();
+        }
+        if(goddessFragment!=null){
+            if(goddessFragment.isAdded()){
+                fragmentManager.beginTransaction().hide(goddessFragment).commit();
+            }
+        }
+        if(weatherFragment!=null){
+            if(weatherFragment.isAdded()){
+                fragmentManager.beginTransaction().hide(weatherFragment).commit();
+            }
+        }
+        if (newsFragment.isAdded()) {
+            fragmentManager.beginTransaction().show(newsFragment).commit();
+        }else{
+            fragmentManager.beginTransaction().add(R.id.container, newsFragment,NewsFragment.class.getName()).commit();
+        }
+    }
+    public void initWeatherFragment(){
+        if(weatherFragment == null){
+            weatherFragment = new WeatherFragment();
+        }
+        if(newsFragment!=null){
+            if(newsFragment.isAdded()){
+                fragmentManager.beginTransaction().hide(newsFragment).commit();
+            }
+        }
+        if(goddessFragment!=null){
+            if(goddessFragment.isAdded()){
+                fragmentManager.beginTransaction().hide(goddessFragment).commit();
+            }
+        }
+        if (weatherFragment.isAdded()) {
+            fragmentManager.beginTransaction().show(weatherFragment).commit();
+        }else{
+            fragmentManager.beginTransaction().add(R.id.container, weatherFragment,WeatherFragment.class.getName()).commit();
+        }
+    }
+    public void initGoddessFragment(){
+        if(goddessFragment == null){
+            goddessFragment = new GoddessFragment();
+        }
+        if(newsFragment!=null){
+            if(newsFragment.isAdded()){
+                fragmentManager.beginTransaction().hide(newsFragment).commit();
+            }
+        }
+        if(goddessFragment!=null){
+            if(goddessFragment.isAdded()){
+                fragmentManager.beginTransaction().hide(goddessFragment).commit();
+            }
+        }
+        if (goddessFragment.isAdded()) {
+            fragmentManager.beginTransaction().show(goddessFragment).commit();
+        }else{
+            fragmentManager.beginTransaction().add(R.id.container, goddessFragment,GoddessFragment.class.getName()).commit();
+        }
+    }
+
 }
