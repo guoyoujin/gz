@@ -3,25 +3,16 @@
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true">
-
-    <View
-        android:id="@+id/vocabulary_actionbar_header"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="@color/apptheme_actionbar" />
-
     <ViewFlipper
         android:id="@+id/vocabulary_list_flipper"
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:inAnimation="@anim/abc_fade_in"
         android:outAnimation="@anim/abc_fade_out">
-
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center" />
-
         <ViewFlipper
             android:id="@+id/vocabulary_message_flipper"
             android:layout_width="fill_parent"
@@ -29,24 +20,22 @@
             android:inAnimation="@anim/abc_fade_in"
             android:outAnimation="@anim/abc_fade_out"
             android:paddingBottom="2dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:animateLayoutChanges="true">
-
-
-            </RelativeLayout>
-
             <android.support.v4.widget.SwipeRefreshLayout
                 android:id="@+id/vocabulary_message_swipe_refresh"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="48dp">
+                android:layout_height="match_parent">
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
                     <LinearLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="match_parent">
+                        <include
+                            android:id="@+id/fragment_wether_layout"
+                            layout="@layout/fragment_wether"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
                         <ImageView
                             android:id="@+id/vocabulary_message_icon"
                             android:layout_width="wrap_content"
@@ -71,12 +60,8 @@
                             android:layout_marginRight="16dp"
                             android:textColor="@color/text_gray" />
                     </LinearLayout>
+                </ScrollView>
             </android.support.v4.widget.SwipeRefreshLayout>
         </ViewFlipper>
     </ViewFlipper>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:layout_below="@+id/vocabulary_actionbar_header"
-        android:background="@drawable/gradient_actionbar" />
 </RelativeLayout>

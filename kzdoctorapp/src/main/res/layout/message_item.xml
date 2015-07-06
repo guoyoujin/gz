@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/message_item_height">
+
+    <ImageView
+        android:layout_width="@dimen/message_item_icon"
+        android:layout_height="@dimen/message_item_icon"
+        android:layout_marginLeft="@dimen/tab_padding"
+        android:src="@mipmap/app_icon"
+        android:layout_centerVertical="true"
+        android:id="@+id/imageView"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="快诊"
+        android:id="@+id/message_item_name"
+        android:layout_alignTop="@+id/imageView"
+        android:layout_toRightOf="@+id/imageView"
+        android:layout_toEndOf="@+id/imageView"
+        android:layout_marginLeft="@dimen/tab_padding"
+        android:layout_marginStart="@dimen/tab_padding"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="送大礼哦"
+        android:id="@+id/message_item_msg"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_alignLeft="@+id/message_item_name"
+        android:layout_alignStart="@+id/message_item_name"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2015.04.28"
+        android:textColor="@color/tab_lines"
+        android:id="@+id/message_item_time"
+        android:layout_alignTop="@+id/message_item_name"
+        android:layout_marginRight="@dimen/tab_padding"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+
+</RelativeLayout>

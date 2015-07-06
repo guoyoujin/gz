@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="write">#FFFFFF</color>
+    <!--线的颜色-->
+    <color name="tab_lines">#d9d9d9</color>
+    <!--titlebar颜色-->
+    <color name="titlebar_bg">#1ebab9</color>
+    <!--titlebaritem按下的颜色-->
+    <color name="titlebar_item_bg">#0b8887</color>
+
+    //下拉刷新--->
+    <color name="red">#FFC93437</color>
+    <color name="blue">#FF375BF1</color>
+    <color name="yellow">#FFF7D23E</color>
+    <color name="green">#FF34A350</color>
+    //下拉刷新----
+
+    <color name="appcolor">#1eb8ba</color>
+    <!-- aboutme 黄色-->
+    <color name="aboutme_yellow">#ffaf25</color>
+
+    <color name="item_gary">#ababab</color>
+    <color name="item_red">#ff6e6e</color>
+    <!-- 填出框item的背景色-->
+    <color name="dialog_item_bg">#ff7a90</color>
+
+</resources>

@@ -1,0 +1,69 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!--<item name="android:background">#efeff4</item>-->
+    </style>
+
+    <style name="AnimBottom">
+        <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
+    </style>
+
+    <!--titlebar item style-->
+    <style name="TitleBaritem">
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">@dimen/titlebar_height</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:background">@drawable/titlebar_item_bg</item>
+        <item name="android:textColor">@color/write</item>
+    </style>
+    <!--AboutMeItem-->
+    <style name="AboutMeItem">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">@dimen/aboutme_marge</item>
+        <item name="android:textColor">@color/write</item>
+    </style>
+
+    <!--aboutme total item style-->
+    <style name="AboutMeTotalItem">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">@dimen/aboutme_marge</item>
+    </style>
+    <!-- 输入框的style-->
+    <style name="InputStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/item_height</item>
+        <item name="android:background">@drawable/aboutme_item_bg</item>
+        <item name="android:layout_margin">@dimen/tab_padding</item>
+        <item name="android:paddingLeft">@dimen/aboutme_marge</item>
+    </style>
+    <!-- 按钮的样式-->
+    <style name="ButtonStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/item_height</item>
+        <item name="android:background">@drawable/button_bg_lv</item>
+        <item name="android:textColor">@color/write</item>
+        <item name="android:layout_margin">@dimen/tab_padding</item>
+    </style>
+
+    <!-- aboutme more item style-->
+    <style name="AboutMeMoreItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/aboutme_marge</item>
+    </style>
+    <!--listview style-->
+    <style name="ListViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:divider">@color/appcolor</item>
+        <item name="android:dividerHeight">0dp</item>
+    </style>
+
+</resources>

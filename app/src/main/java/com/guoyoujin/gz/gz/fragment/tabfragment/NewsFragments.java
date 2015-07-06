@@ -30,7 +30,7 @@ import java.util.ArrayList;
 /**
  * Created by guoyoujin on 15/6/18.
  */
-public class Fragment1 extends Fragment {
+public class NewsFragments extends Fragment {
     private LinearLayoutManager layoutManager;
     private View view;
     private RecyclerView recyView_fragment;

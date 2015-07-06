@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 
 import com.guoyoujin.gz.gz.R;
 import com.guoyoujin.gz.gz.application.MyApplication;
-import com.guoyoujin.gz.gz.fragment.tabfragment.Fragment1;
+import com.guoyoujin.gz.gz.fragment.tabfragment.NewsFragments;
 import com.guoyoujin.gz.gz.utils.Log;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
@@ -60,7 +60,7 @@ public class NewsFragment extends Fragment{
         Demo demo=new Demo();
         for (int titleResId : demo.tabs()) {
             Log.e(MyApplication.TAG,"初始化fragment");
-            pages.add(FragmentPagerItem.of(getActivity().getString(titleResId), Fragment1.class));
+            pages.add(FragmentPagerItem.of(getActivity().getString(titleResId), NewsFragments.class));
         }
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(getActivity().getSupportFragmentManager(), pages);
         viewpager.setAdapter(adapter);

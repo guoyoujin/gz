@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include layout="@layout/titlebar"></include>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/tab_padding"
+        android:textColor="@color/item_gary"
+        android:text="*您的隐私信息将被严格保密"/>
+
+    <EditText
+        android:id="@+id/login_et_phone"
+        style="@style/InputStyle"
+        android:inputType="phone"
+        android:hint="手机号"/>
+
+    <Button
+        android:id="@+id/login_bt_next"
+        style="@style/ButtonStyle"
+        android:text="下一步"/>
+
+</LinearLayout>

@@ -3,6 +3,7 @@ package com.guoyoujin.gz.gz.application;
 import android.app.Application;
 import android.content.Context;
 
+import com.guoyoujin.gz.gz.utils.NetUtil;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -16,8 +17,16 @@ import com.orhanobut.logger.Logger;
 public class MyApplication extends Application{
 
     public static final String TAG="GuoYouJin";
+
+    private static Application mApplication;
+    public static int mNetWorkState;
+    public static synchronized Application getInstance() {
+        return mApplication;
+    }
     public void onCreate() {
         super.onCreate();
+        mApplication = this;
+        mNetWorkState = NetUtil.getNetworkState(this);
         Logger.init(TAG)
                 .setMethodCount(3)
                 .hideThreadInfo()

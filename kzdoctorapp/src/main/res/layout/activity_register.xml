@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/titlebar"></include>
+
+        <EditText
+            android:id="@+id/register_et_name"
+            style="@style/InputStyle"
+            android:hint="姓名"
+            android:inputType="text"/>
+
+        <EditText
+            android:id="@+id/register_et_phone"
+            style="@style/InputStyle"
+            android:hint="手机号"
+            android:inputType="phone"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/register_et_authcode"
+                style="@style/InputStyle"
+                android:layout_weight="3"
+                android:hint="验证码"
+                android:inputType="number"/>
+
+            <Button
+                android:id="@+id/register_bt_getauthcode"
+                style="@style/ButtonStyle"
+                android:layout_marginLeft="@dimen/item_height"
+                android:layout_weight="5"
+                android:text="获取验证码"/>
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/register_et_resetpwd"
+            style="@style/InputStyle"
+            android:hint="密码"
+            android:inputType="text"/>
+
+        <EditText
+            android:id="@+id/register_et_invitecode"
+            style="@style/InputStyle"
+            android:hint="邀请码(选填)"
+            android:inputType="number"/>
+
+        <CheckBox
+            android:id="@+id/register_cb_agreement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:checked="true"
+            android:text="同意用户协议"
+            />
+
+        <Button
+            android:id="@+id/register_bt_reg"
+            style="@style/ButtonStyle"
+            android:text="注册"/>
+    </LinearLayout>
+</ScrollView>

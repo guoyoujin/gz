@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/tab_padding"
+        android:background="@mipmap/order_item_bg">
+
+        <TextView
+            android:id="@+id/order_item_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/aboutme_marge"
+            android:textColor="#d6d6d6"
+            android:text="订单号:001122"/>
+
+        <TextView
+            android:id="@+id/order_item_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin="@dimen/aboutme_marge"
+            android:textColor="@color/item_red"
+            android:text="已处理"/>
+
+        <TextView
+            android:id="@+id/order_item_patient_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/order_item_number"
+            android:layout_alignStart="@+id/order_item_number"
+            android:layout_below="@+id/order_item_number"
+            android:layout_marginTop="16dp"
+            android:textStyle="bold"
+            android:text="患者姓名:小明"/>
+
+
+        <TextView
+            android:id="@+id/order_item_patient_project"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/order_item_patient_name"
+            android:layout_alignStart="@+id/order_item_patient_name"
+            android:layout_below="@+id/order_item_patient_name"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/item_gary"
+            android:text="检查项目:CT"/>
+
+        <TextView
+            android:id="@+id/order_item_patient_jine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/order_item_patient_name"
+            android:text="600￥"
+            android:textColor="@color/item_gary"
+            android:textSize="38sp"/>
+    </RelativeLayout>
+</LinearLayout>

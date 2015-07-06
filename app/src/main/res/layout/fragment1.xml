@@ -56,9 +56,4 @@
             </android.support.v4.widget.SwipeRefreshLayout>
         </ViewFlipper>
     </ViewFlipper>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:layout_below="@+id/vocabulary_actionbar_header"
-        android:background="@drawable/gradient_actionbar" />
 </RelativeLayout>

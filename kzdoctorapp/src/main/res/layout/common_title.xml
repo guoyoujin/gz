@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/linout_title_bar"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titlebar_height"
+        android:background="@color/titlebar_bg" >
+		<LinearLayout
+		    android:id="@+id/left_lin_layout"
+		    android:layout_width="0dp"
+		    android:layout_weight="2"
+		    android:layout_height="match_parent"
+			>
+	        <TextView
+	            android:id="@+id/btn_left"
+	            android:layout_width="0dp"
+	            android:layout_height="match_parent"
+	            android:layout_weight="2"
+                style="@style/TitleBaritem"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/tab_padding"
+                android:drawableLeft="@mipmap/titlebarback"
+                android:text="返回" />
+		</LinearLayout>
+		<LinearLayout
+		    android:id="@+id/centre_lin_layout"
+		    android:layout_width="0dp"
+		    android:layout_weight="2"
+		    android:gravity="center_vertical|center_horizontal"
+		    android:layout_height="match_parent"
+		     >
+	        <TextView
+	            android:id="@+id/tv_title"
+	            android:layout_width="wrap_content"
+                style="@style/TitleBaritem"
+	            android:gravity="center_vertical|center_horizontal"
+	            android:layout_height="match_parent"
+	            android:text="标题" />
+	        <ImageView
+                android:id="@+id/img_title_group"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@null"
+                android:visibility="gone"
+                android:layout_marginLeft="5dp" />
+	    </LinearLayout>
+		<LinearLayout
+		    android:id="@+id/right_lin_layout"
+		    android:layout_width="0dp"
+		    android:layout_weight="2"
+		    android:layout_height="match_parent"
+		     >
+	        <TextView
+	            android:id="@+id/btn_right"
+	            android:layout_weight="2"
+	            android:layout_width="0dp"
+	            android:gravity="center_vertical|center_horizontal"
+	            android:layout_height="match_parent"
+                style="@style/TitleBaritem"
+	            android:text="确定" />
+		</LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/net_status_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="40.0dip"
+        android:gravity="center_vertical"
+        android:visibility="gone"
+        android:paddingLeft="10.0dip" >
+
+        <TextView
+            android:id="@+id/net_status_bar_info_top"
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="5.0dip"
+            android:layout_weight="1.0"
+            android:drawablePadding="10.0dip"
+            android:gravity="center_vertical"
+            android:textColor="#ff2a271e"
+            android:textSize="13.0sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4.0dip"
+             />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ly_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+</LinearLayout>
