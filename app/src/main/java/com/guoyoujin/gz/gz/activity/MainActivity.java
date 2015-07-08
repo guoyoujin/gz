@@ -7,6 +7,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.guoyoujin.gz.gz.R;
 import com.guoyoujin.gz.gz.fragment.GoddessFragment;
@@ -32,9 +34,11 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
         //activity_main 在toolbar的下方
         //activity_main_blacktoolbar 在toolbar的下方，但是toolbar会蒙上一层阴影
         // activity_main_topdrawer 把toolbar覆盖
+        Window window = getWindow();
+        window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         setContentView(R.layout.activity_main);
         mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
-        mToolbar.setTitle("你好");//使用此方法一定要在 setSupportActionBar(mToolbar);方法之前
+        mToolbar.setTitle(getResources().getString(R.string.app_name));//使用此方法一定要在 setSupportActionBar(mToolbar);方法之前
 //        mToolbar.setSubtitle("1副标题");
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);

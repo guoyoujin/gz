@@ -64,6 +64,10 @@
             android:name=".activity.MainActivity"
             android:label="MainActivity" >
         </activity>
+        <activity
+            android:name=".activity.BeautyPhotoDetailsActivity"
+            android:label="BeautyPhotoDetailsActivity" >
+        </activity>
     </application>
 
 </manifest>

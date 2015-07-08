@@ -21,7 +21,6 @@ public class MainActivity extends ToolBarActivity {
     @Override
     public void onCreateCustomToolBar(Toolbar toolbar) {
         super.onCreateCustomToolBar(toolbar);
-        toolbar.showOverflowMenu() ;
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

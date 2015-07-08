@@ -109,4 +109,19 @@
     <color name="menu_bottom_bg">#f9f9f9</color>
     <color name="black">#000000</color>
 
+
+
+    <!-- 女神 -->
+    <color name="line_gray">#D7D7D7</color>
+    <color name="xingren_bai">#FFFFCD</color>
+    <color name="dark_gray">#ff636363</color>
+
+
+    <color name="line_color">#999999</color>
+    <color name="ldrawer_color">#FFFFFF</color>
+    <drawable name="transparent_background">#00000000</drawable>
+
+    <color name="list_background">#2c2c2c</color>
+    <color name="list_background_pressed">#fa3e36</color>
+    <color name="list_divider">#0e0e0e</color>
 </resources>

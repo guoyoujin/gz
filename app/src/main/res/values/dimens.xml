@@ -26,4 +26,25 @@
 
     <drawable name="view_unpressed">#00000000</drawable>
     <drawable name="view_pressed">#22000000</drawable>
+
+
+    <dimen name="more_bg_item_padding">12.0dip</dimen>
+
+
+    <!-- 轮播 -->
+    <dimen name="lunbo_fontsize">13sp</dimen>
+    <dimen name="viewpager_focusview_paddingleft_size">5dp</dimen>
+    <dimen name="viewpager_focusview_paddingright_size">20dp</dimen>
+    <dimen name="viewpager_focusview_text_padding_font">4dp</dimen>
+
+
+    <dimen name="ldrawer_drawableSize">50dp</dimen>
+    <dimen name="ldrawer_barSize">18dp</dimen>
+    <dimen name="ldrawer_topBottomBarArrowSize">11dp</dimen>
+    <dimen name="ldrawer_thickness">2dp</dimen>
+    <dimen name="ldrawer_gapBetweenBars">3dp</dimen>
+    <dimen name="ldrawer_middleBarArrowSize">16dp</dimen>
 </resources>
+
+
+
