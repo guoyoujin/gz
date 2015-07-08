@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.guoyoujin.gz.gz.R;
 import com.guoyoujin.gz.gz.fragment.GoddessFragment;
@@ -81,13 +82,19 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
         }
 
     }
-
+    private long mExitTime;
     @Override
     public void onBackPressed() {
-        if (mNavigationDrawerFragment.isDrawerOpen())
+        if (mNavigationDrawerFragment.isDrawerOpen()) {
             mNavigationDrawerFragment.closeDrawer();
-        else
-            super.onBackPressed();
+        }else {
+            if ((System.currentTimeMillis() - mExitTime) > 2000) {
+                Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                mExitTime = System.currentTimeMillis();
+            } else {
+                finish();
+            }
+        }
     }
 
     public void initFragmentTrans() {
@@ -161,5 +168,4 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
             fragmentManager.beginTransaction().add(R.id.container, goddessFragment, GoddessFragment.class.getName()).commit();
         }
     }
-
 }
