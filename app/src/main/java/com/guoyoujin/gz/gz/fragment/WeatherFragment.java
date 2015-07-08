@@ -63,6 +63,7 @@ public class WeatherFragment extends Fragment {
     private ImageView runImage;
     private Handler mHandler = new Handler() {
         public void handleMessage(android.os.Message msg) {
+            vocabulary_message_swipe_refresh.setRefreshing(false);
             switch (msg.what) {
                 case Globe.GET_WEATHER_SCUESS:
                     Log.e(MyApplication.TAG,"数据结果来了");

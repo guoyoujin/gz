@@ -9,8 +9,9 @@ import android.os.Message;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.guoyoujin.gz.gz.activity.ContentActivity;
+import com.guoyoujin.gz.gz.activity.MainActivity;
 import com.guoyoujin.gz.gz.producttour.ProductTourActivity;
+import com.guoyoujin.gz.gz.utils.PreferenceUtils;
 
 
 public class SplashActivity extends Activity {
@@ -43,8 +44,9 @@ public class SplashActivity extends Activity {
 
     private void init() {
         SharedPreferences preferences = getSharedPreferences("first_pref",MODE_PRIVATE);
-        isFirst = preferences.getBoolean("isFirst", true);
-        if (false) {
+        isFirst = PreferenceUtils.getPrefBoolean(SplashActivity.this, "isFirst", true);
+        if (isFirst) {
+            PreferenceUtils.setPrefBoolean(SplashActivity.this,"isFirst",false);
             mHandler.sendEmptyMessageDelayed(GO_HOME, 2800);
         } else {
             mHandler.sendEmptyMessageDelayed(GO_GUIDE, 2800);
@@ -52,7 +54,7 @@ public class SplashActivity extends Activity {
     }
 
     private void goHome() {
-        Intent intent = new Intent(SplashActivity.this, ContentActivity.class);
+        Intent intent = new Intent(SplashActivity.this, MainActivity.class);
         startActivity(intent);
         overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
         this.finish();

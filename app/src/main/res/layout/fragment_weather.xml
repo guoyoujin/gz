@@ -17,6 +17,7 @@
             android:id="@+id/vocabulary_message_flipper"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/b3"
             android:inAnimation="@anim/abc_fade_in"
             android:outAnimation="@anim/abc_fade_out"
             android:paddingBottom="0dp">
