@@ -1,5 +1,6 @@
 package com.guoyoujin.gz.gz.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.guoyoujin.gz.gz.R;
+import com.guoyoujin.gz.gz.activity.ContentActivity;
 
 /**
  * Created by guoyoujin on 15/6/17.
@@ -198,13 +200,13 @@ public class GoddessFragment extends Fragment implements View.OnClickListener {
                 grilTag = tags[23];
                 break;
         }
-//        Intent intent = new Intent(getActivity(), BeautyDetailActivity.class);
-//        Bundle bundle = new Bundle();
-//        bundle.putString("GRILTAG", grilTag);
-//        intent.putExtras(bundle);
-//        getActivity().startActivity(intent);
-//        getActivity().overridePendingTransition(R.anim.abc_fade_in,
-//                R.anim.abc_fade_out);
+        Intent intent = new Intent(getActivity(), ContentActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("GRILTAG", grilTag);
+        intent.putExtras(bundle);
+        getActivity().startActivity(intent);
+        getActivity().overridePendingTransition(R.anim.abc_fade_in,
+                R.anim.abc_fade_out);
     }
 
 //	@Override
