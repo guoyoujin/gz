@@ -1,5 +1,6 @@
 package com.guoyoujin.gz.gz.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -12,8 +13,10 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.guoyoujin.gz.gz.R;
+import com.guoyoujin.gz.gz.book.BookListActivity2;
 import com.guoyoujin.gz.gz.fragment.GoddessFragment;
 import com.guoyoujin.gz.gz.fragment.NewsFragment;
+import com.guoyoujin.gz.gz.fragment.ReadBookFragment;
 import com.guoyoujin.gz.gz.fragment.WeatherFragment;
 import com.guoyoujin.gz.gz.toolbar.NavigationDrawerCallbacks;
 import com.guoyoujin.gz.gz.toolbar.NavigationDrawerFragment;
@@ -27,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
     private NewsFragment newsFragment = null;
     private WeatherFragment weatherFragment = null;
     private GoddessFragment goddessFragment = null;
+    private ReadBookFragment readBookFragment = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +80,8 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
                 mTitle = "Weather";
                 break;
             case 3:
+                startActivity(new Intent(MainActivity.this, BookListActivity2.class));
+                mTitle = "阅读";
                 break;
             default:
 
@@ -120,6 +126,11 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
                 fragmentManager.beginTransaction().hide(weatherFragment).commit();
             }
         }
+        if (readBookFragment != null) {
+            if (readBookFragment.isAdded()) {
+                fragmentManager.beginTransaction().hide(readBookFragment).commit();
+            }
+        }
         if (newsFragment.isAdded()) {
             fragmentManager.beginTransaction().show(newsFragment).commit();
         } else {
@@ -141,6 +152,11 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
                 fragmentManager.beginTransaction().hide(goddessFragment).commit();
             }
         }
+        if (readBookFragment != null) {
+            if (readBookFragment.isAdded()) {
+                fragmentManager.beginTransaction().hide(readBookFragment).commit();
+            }
+        }
         if (weatherFragment.isAdded()) {
             fragmentManager.beginTransaction().show(weatherFragment).commit();
         } else {
@@ -157,15 +173,45 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
                 fragmentManager.beginTransaction().hide(newsFragment).commit();
             }
         }
-        if (goddessFragment != null) {
-            if (goddessFragment.isAdded()) {
-                fragmentManager.beginTransaction().hide(goddessFragment).commit();
+        if (weatherFragment != null) {
+            if (weatherFragment.isAdded()) {
+                fragmentManager.beginTransaction().hide(weatherFragment).commit();
+            }
+        }
+        if (readBookFragment != null) {
+            if (readBookFragment.isAdded()) {
+                fragmentManager.beginTransaction().hide(readBookFragment).commit();
             }
         }
         if (goddessFragment.isAdded()) {
             fragmentManager.beginTransaction().show(goddessFragment).commit();
         } else {
             fragmentManager.beginTransaction().add(R.id.container, goddessFragment, GoddessFragment.class.getName()).commit();
+        }
+    }
+    public void initReadBookFragment() {
+        if (readBookFragment == null) {
+            readBookFragment = new ReadBookFragment();
+        }
+        if (newsFragment != null) {
+            if (newsFragment.isAdded()) {
+                fragmentManager.beginTransaction().hide(newsFragment).commit();
+            }
+        }
+        if (goddessFragment != null) {
+            if (goddessFragment.isAdded()) {
+                fragmentManager.beginTransaction().hide(goddessFragment).commit();
+            }
+        }
+        if (weatherFragment != null) {
+            if (weatherFragment.isAdded()) {
+                fragmentManager.beginTransaction().hide(weatherFragment).commit();
+            }
+        }
+        if (readBookFragment.isAdded()) {
+            fragmentManager.beginTransaction().show(readBookFragment).commit();
+        } else {
+            fragmentManager.beginTransaction().add(R.id.container, readBookFragment, ReadBookFragment.class.getName()).commit();
         }
     }
 }

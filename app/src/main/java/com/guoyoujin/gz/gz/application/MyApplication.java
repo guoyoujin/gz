@@ -3,6 +3,8 @@ package com.guoyoujin.gz.gz.application;
 import android.app.Application;
 import android.content.Context;
 
+import com.guoyoujin.gz.gz.book.date.FinalDate;
+import com.guoyoujin.gz.gz.book.helper.BookDB;
 import com.guoyoujin.gz.gz.utils.NetUtil;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -17,7 +19,8 @@ import com.orhanobut.logger.Logger;
 public class MyApplication extends Application{
 
     public static final String TAG="GuoYouJin";
-
+    public static BookDB bookDB;
+    private static Context context;
     private static Application mApplication;
     public static int mNetWorkState;
     public static synchronized Application getInstance() {
@@ -33,6 +36,8 @@ public class MyApplication extends Application{
                 .setLogLevel(LogLevel.NONE)
                 .setMethodOffset(2);
         initImageLoader(getApplicationContext());
+        context = getApplicationContext();
+        initDateBase();
     }
 
     public void initImageLoader(Context context){
@@ -46,4 +51,8 @@ public class MyApplication extends Application{
         // Initialize ImageLoader with configuration.
         ImageLoader.getInstance().init(config);
     }
+    private static void initDateBase() {
+        bookDB = new BookDB(context, FinalDate.DATABASE_TABKE);
+    }
+
 }

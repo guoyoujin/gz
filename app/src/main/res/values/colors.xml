@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="bg">#f58220</color>
     <color name="text_selected">#888</color>
     <color name="myPrimaryColor">#3F51B5</color>
     <color name="myPrimaryDarkColor">#3F51B5</color>

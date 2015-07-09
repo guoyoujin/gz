@@ -68,6 +68,17 @@
             android:name=".activity.BeautyPhotoDetailsActivity"
             android:label="BeautyPhotoDetailsActivity" >
         </activity>
+        <activity android:name="com.guoyoujin.gz.gz.book.BookListActivity2"/>
+        <activity
+            android:name="com.guoyoujin.gz.gz.book.Read"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.guoyoujin.gz.gz.book.InActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity android:name="com.guoyoujin.gz.gz.book.HelpActivity"></activity>
     </application>
 
 </manifest>
