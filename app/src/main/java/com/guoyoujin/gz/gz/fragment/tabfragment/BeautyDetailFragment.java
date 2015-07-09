@@ -55,15 +55,11 @@ public class BeautyDetailFragment extends Fragment{
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
 		activity = getActivity();
         if (currentView == null) {
-			currentView = LayoutInflater.from(activity).inflate(
-					R.layout.fragment_progress_container, null);
-			viewContainer = (LinearLayout) currentView
-					.findViewById(R.id.container);
-
+			currentView = LayoutInflater.from(activity).inflate(R.layout.fragment_progress_container, null);
+			viewContainer = (LinearLayout) currentView.findViewById(R.id.container);
 		} else {
 			ViewGroup parent = (ViewGroup) currentView.getParent();
 			if (parent != null) {
@@ -76,14 +72,11 @@ public class BeautyDetailFragment extends Fragment{
 
 	private void initView() {
 		if (listView == null || mAdapter == null) {
-			listView = LayoutInflater.from(activity).inflate(
-					R.layout.waterfall_listview, null);
-
+			listView = LayoutInflater.from(activity).inflate(R.layout.waterfall_listview, null);
             twoWayView = (TwoWayView) listView.findViewById(R.id.twoWayView);
             twoWayView.setHasFixedSize(true);
             twoWayView.setLongClickable(true);
-            Log.e(MyApplication.TAG,"imgs.size()======"+imgs.size());
-            twoWayView.setAdapter(new LayoutAdapter(activity, twoWayView,imgs));
+            initTwoWayView();
             viewContainer.removeAllViews();
 			viewContainer.addView(listView);
 		}
@@ -91,14 +84,12 @@ public class BeautyDetailFragment extends Fragment{
 	}
     public void initTwoWayView(){
         final ItemClickSupport itemClick = ItemClickSupport.addTo(twoWayView);
-
         itemClick.setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
             @Override
             public void onItemClick(RecyclerView parent, View child, int position, long id) {
 
             }
         });
-
         itemClick.setOnItemLongClickListener(new ItemClickSupport.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(RecyclerView parent, View child, int position, long id) {
@@ -106,13 +97,11 @@ public class BeautyDetailFragment extends Fragment{
                 return true;
             }
         });
-
         twoWayView.setOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int scrollState) {
 
             }
-
             @Override
             public void onScrolled(RecyclerView recyclerView, int i, int i2) {
 
@@ -120,22 +109,17 @@ public class BeautyDetailFragment extends Fragment{
         });
         final Drawable divider = getResources().getDrawable(R.drawable.divider);
         twoWayView.addItemDecoration(new DividerItemDecoration(divider));
-        Log.e(MyApplication.TAG,"imgs.size()======"+imgs.size());
         twoWayView.setAdapter(new LayoutAdapter(activity, twoWayView,imgs));
     }
 
 	private void initNetErro() {
 		// TODO
-		final View loadView = LayoutInflater.from(activity).inflate(
-				R.layout.loading_view, null);
-		loadView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
-				LayoutParams.MATCH_PARENT));
-		View netErroView = LayoutInflater.from(activity).inflate(
-				R.layout.page_store_net_erro, null);
+		final View loadView = LayoutInflater.from(activity).inflate(R.layout.loading_view, null);
+		loadView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT));
+		View netErroView = LayoutInflater.from(activity).inflate(R.layout.page_store_net_erro, null);
 		Button reloadBtn = (Button) netErroView.findViewById(R.id.reload_btn);
 		netErroView.findViewById(R.id.net_erro_img).setVisibility(View.VISIBLE);
 		reloadBtn.setOnClickListener(new OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
 				if (viewContainer != null) {
@@ -153,13 +137,11 @@ public class BeautyDetailFragment extends Fragment{
 	}
 
 	private void getData() {
-
 		new Thread() {
 			@Override
 			public void run() {
 				try {
-					beautyVo = GetBeautyInterface.getNetData(BEAUTY_COL,
-                            girlTag, pn, rn);
+					beautyVo = GetBeautyInterface.getNetData(BEAUTY_COL,girlTag, pn, rn);
                     Log.e(MyApplication.TAG,"beautyVo============"+beautyVo.toString());
                 } catch (Exception e1) {
 					e1.printStackTrace();
@@ -169,7 +151,6 @@ public class BeautyDetailFragment extends Fragment{
 					public void run() {
 						if (beautyVo != null) {
 							ArrayList<Imgs> img = beautyVo.getImgs();
-
 							if (img != null && img.size() > 0) {
 								img.remove(img.size() - 1);
 								if (isFresh) {

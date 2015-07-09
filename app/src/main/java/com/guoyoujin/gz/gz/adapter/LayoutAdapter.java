@@ -28,7 +28,6 @@ import com.guoyoujin.gz.gz.R;
 import com.guoyoujin.gz.gz.utils.LoadingImgUtil;
 import com.guoyoujin.gz.gz.vo.BeautyMainVo;
 
-import org.lucasr.twowayview.TwoWayLayoutManager;
 import org.lucasr.twowayview.widget.StaggeredGridLayoutManager;
 import org.lucasr.twowayview.widget.TwoWayView;
 
@@ -40,15 +39,14 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.SimpleView
     private final Context mContext;
     private final TwoWayView mRecyclerView;
     private ArrayList<BeautyMainVo.Imgs> rowImages;
-    private int mCurrentItemId = 0;
 
     public static class SimpleViewHolder extends RecyclerView.ViewHolder {
         // 缩略图
-        public final ImageView thumbImage;
+        public  ImageView thumbImage;
         // 收藏
-        public final ImageView img_like;
+        public  ImageView img_like;
         // 标签
-        public final TextView title_tag;
+        public  TextView title_tag;
         public SimpleViewHolder(View view) {
             super(view);
             title_tag = (TextView) view.findViewById(R.id.title_tag);
@@ -64,6 +62,7 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.SimpleView
     }
 
     public void removeItem(int position) {
+        rowImages.remove(position);
         notifyItemRemoved(position);
     }
 
@@ -76,45 +75,11 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.SimpleView
     @Override
     public void onBindViewHolder(SimpleViewHolder holder, int position) {
         BeautyMainVo.Imgs rowImage = rowImages.get(position);
-        LoadingImgUtil.loadimgAnimate(rowImage.getThumbnailUrl(),
-                holder.thumbImage);
+        LoadingImgUtil.loadimgAnimate(rowImage.getThumbnailUrl(),holder.thumbImage);
         holder.title_tag.setText(rowImage.getTitle());
-        boolean isVertical = (mRecyclerView.getOrientation() == TwoWayLayoutManager.Orientation.VERTICAL);
         final View itemView = holder.itemView;
-
-        final int itemId = position;
-        final int dimenId;
-        if (itemId % 3 == 0) {
-            dimenId = R.dimen.staggered_child_medium;
-        } else if (itemId % 5 == 0) {
-            dimenId = R.dimen.staggered_child_large;
-        } else if (itemId % 7 == 0) {
-            dimenId = R.dimen.staggered_child_xlarge;
-        } else {
-            dimenId = R.dimen.staggered_child_small;
-        }
-
-        final int span;
-        if (itemId == 2) {
-            span = 2;
-        } else {
-            span = 1;
-        }
-
-        final int size = mContext.getResources().getDimensionPixelSize(dimenId);
-
-        final StaggeredGridLayoutManager.LayoutParams lp =
-                (StaggeredGridLayoutManager.LayoutParams) itemView.getLayoutParams();
-
-        if (!isVertical) {
-            lp.span = span;
-            lp.width = size;
-            itemView.setLayoutParams(lp);
-        } else {
-            lp.span = span;
-            lp.height = size;
-            itemView.setLayoutParams(lp);
-        }
+        final StaggeredGridLayoutManager.LayoutParams lp = (StaggeredGridLayoutManager.LayoutParams) itemView.getLayoutParams();
+        itemView.setLayoutParams(lp);
     }
 
     @Override

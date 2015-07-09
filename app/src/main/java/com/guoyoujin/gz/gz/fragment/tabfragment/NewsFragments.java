@@ -147,7 +147,6 @@ public class NewsFragments extends Fragment {
                                 recyView_fragment.setAdapter(adapter);
                             } else {
                                //错误
-
                             }
                         } else {
                             //错误
