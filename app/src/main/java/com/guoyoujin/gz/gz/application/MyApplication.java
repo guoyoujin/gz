@@ -3,6 +3,7 @@ package com.guoyoujin.gz.gz.application;
 import android.app.Application;
 import android.content.Context;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.guoyoujin.gz.gz.book.date.FinalDate;
 import com.guoyoujin.gz.gz.book.helper.BookDB;
 import com.guoyoujin.gz.gz.utils.NetUtil;
@@ -28,6 +29,7 @@ public class MyApplication extends Application{
     }
     public void onCreate() {
         super.onCreate();
+        Fresco.initialize(this);
         mApplication = this;
         mNetWorkState = NetUtil.getNetworkState(this);
         Logger.init(TAG)

@@ -5,6 +5,7 @@ import com.guoyoujin.gz.gz.global.Globe;
 import com.guoyoujin.gz.gz.net.ParcelMap;
 import com.guoyoujin.gz.gz.net.UnEncryptionHttpConnect;
 import com.guoyoujin.gz.gz.net.UnEncryptionRequestParcelable;
+import com.guoyoujin.gz.gz.utils.L;
 import com.guoyoujin.gz.gz.vo.BeautyMainVo;
 
 import java.io.UnsupportedEncodingException;
@@ -21,14 +22,16 @@ public class GetBeautyInterface {
 	 */
 	public static BeautyMainVo getNetData(String col, String tag, int pn, int rn)
 			throws Exception {
-
+        L.e(Globe.BEAUTY_BASE_URL + "col=" + EncodeString(col) + "&tag="
+                + EncodeString(tag) + "&sort=0&tag3=&pn=" + pn + "&rn="
+                + rn + "&p=channel&from=1");
 		UnEncryptionRequestParcelable requestParam = new UnEncryptionRequestParcelable(
 				Globe.BEAUTY_BASE_URL + "col=" + EncodeString(col) + "&tag="
 						+ EncodeString(tag) + "&sort=0&tag3=&pn=" + pn + "&rn="
 						+ rn + "&p=channel&from=1");
 		UnEncryptionHttpConnect dhc = new UnEncryptionHttpConnect(requestParam);
 
-		for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {
 			try {
 				dhc.connect();
 				String responseBody = dhc.getResponseBody();

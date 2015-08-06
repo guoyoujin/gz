@@ -83,6 +83,10 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
                 startActivity(new Intent(MainActivity.this, BookListActivity2.class));
                 mTitle = "阅读";
                 break;
+            case 4:
+                startActivity(new Intent(MainActivity.this, RecyListViewLoadActivity.class));
+                mTitle = "测试";
+                break;
             default:
 
         }

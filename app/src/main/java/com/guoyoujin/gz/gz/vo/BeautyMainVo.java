@@ -1,10 +1,13 @@
 package com.guoyoujin.gz.gz.vo;
 
+import com.guoyoujin.gz.gz.kale.AdapterModel;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BeautyMainVo implements Serializable{
+
 	/**
 	 * 
 	 */
@@ -82,7 +85,9 @@ public class BeautyMainVo implements Serializable{
 		this.imgs = imgs;
 	}
 
-	public static class Imgs implements Serializable{
+	public static class Imgs implements Serializable,AdapterModel {
+        public static final int FIRST = 1;
+        public static final int Second = 2;
 		private String id;
 		private String desc;
 		private List<String> tags;
@@ -142,7 +147,13 @@ public class BeautyMainVo implements Serializable{
 		private int fromName;
 		private String fashion;
 		private String title;
+        public int getDataTypeCount() {
+            return 2;
+        }
 
+        public Object getDataType() {
+            return 1 + (int) (Math.random() * 2);
+        }
 		public String getId() {
 			return id;
 		}
@@ -776,4 +787,6 @@ public class BeautyMainVo implements Serializable{
 		}
 
 	}
+
+
 }

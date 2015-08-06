@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.guoyoujin.gz.gz" >
+
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
@@ -25,6 +26,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+
     <application
         android:name=".application.MyApplication"
         android:allowBackup="true"
@@ -38,23 +40,24 @@
             android:theme="@style/WelcomeTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".producttour.ProductTour2Activity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
         </activity>
         <activity
             android:name=".producttour.ProductTour3Activity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
         </activity>
         <activity
             android:name=".producttour.ProductTourActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
         </activity>
         <activity
             android:name=".activity.ContentActivity"
@@ -68,17 +71,21 @@
             android:name=".activity.BeautyPhotoDetailsActivity"
             android:label="BeautyPhotoDetailsActivity" >
         </activity>
-        <activity android:name="com.guoyoujin.gz.gz.book.BookListActivity2"/>
+        <activity android:name=".book.BookListActivity2" />
         <activity
-            android:name="com.guoyoujin.gz.gz.book.Read"
+            android:name=".book.Read"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.guoyoujin.gz.gz.book.InActivity"
+            android:name=".book.InActivity"
             android:screenOrientation="portrait" >
         </activity>
-        <activity android:name="com.guoyoujin.gz.gz.book.HelpActivity"></activity>
+        <activity android:name=".book.HelpActivity" />
+        <activity
+            android:name=".activity.RecyListViewLoadActivity"
+            android:label="测试recy" >
+        </activity>
     </application>
 
 </manifest>
