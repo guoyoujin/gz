@@ -1,10 +1,13 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/apptheme_actionbar"
+    android:fitsSystemWindows="true"
     >
 
     <com.guoyoujin.gz.gz.kale.VerticalSwipeRefreshLayout
         android:id="@+id/swipeRefreshLayout"
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

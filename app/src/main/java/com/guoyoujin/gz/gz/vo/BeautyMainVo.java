@@ -88,7 +88,9 @@ public class BeautyMainVo implements Serializable{
 	public static class Imgs implements Serializable,AdapterModel {
         public static final int FIRST = 1;
         public static final int Second = 2;
-		private String id;
+        public static final int Three = 3;
+
+        private String id;
 		private String desc;
 		private List<String> tags;
 		private Owner owner;

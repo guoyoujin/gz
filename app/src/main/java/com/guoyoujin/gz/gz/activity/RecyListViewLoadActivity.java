@@ -21,6 +21,9 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.guoyoujin.gz.gz.R;
@@ -71,10 +74,15 @@ public class RecyListViewLoadActivity extends AppCompatActivity {
 
     private ImageView headerIv;
 
-    private Button footerBtn;
 
     private ImageView floatIV;
     private ExRecyclerView waterFallRcv;
+    private View loadModel;
+    private RelativeLayout pull_to_refresh_load_relativelayout;
+    private ProgressBar pull_to_refresh_load_progress;
+    private TextView pull_to_refresh_loadmore_text;
+    private Button button_load_button;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,7 +103,7 @@ public class RecyListViewLoadActivity extends AppCompatActivity {
         headerLl = (LinearLayout) headerRoot.findViewById(R.id.header_linearLayout);
         headerIv = (ImageView) headerRoot.findViewById(R.id.header_imageView);
         floatIV = (ImageView) findViewById(R.id.float_imageButton);
-        footerBtn = new Button(this);
+        initLoadModel() ;
         setViews();
     }
     protected void setViews() {
@@ -104,7 +112,7 @@ public class RecyListViewLoadActivity extends AppCompatActivity {
         setWaterFallRcv();
         setHeaderView();
         setFooterView();
-        footerBtn.setVisibility(View.GONE);
+        loadModel.setVisibility(View.GONE);
     }
     private void setFloatIv() {
         floatIV.setOnClickListener(new View.OnClickListener() {
@@ -113,6 +121,11 @@ public class RecyListViewLoadActivity extends AppCompatActivity {
                 waterFallRcv.smoothScrollToPosition(0);
             }
         });
+    }
+    public void initLoadModel(){
+        loadModel = LayoutInflater.from(this).inflate(R.layout.recy_list_bottom_load_mode,null);
+        button_load_button = (Button) loadModel.findViewById(R.id.button_load_button);
+        pull_to_refresh_load_relativelayout = (RelativeLayout) loadModel.findViewById(R.id.pull_to_refresh_load_relativelayout);
     }
 
     private boolean isLoadingData = false;
@@ -128,6 +141,7 @@ public class RecyListViewLoadActivity extends AppCompatActivity {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                isFresh = true;
                 if (!isLoadingData) {
                     getData();
                     isLoadingData = true;
@@ -143,9 +157,9 @@ public class RecyListViewLoadActivity extends AppCompatActivity {
     private void setWaterFallRcv() {
         // 设置头部或底部的操作应该在setAdapter之前
         waterFallRcv.addHeaderView(headerLl);
-        waterFallRcv.addFooterView(footerBtn);
+        waterFallRcv.addFooterView(loadModel);
 
-        StaggeredGridLayoutManager staggeredGridLayoutManager = new ExStaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        StaggeredGridLayoutManager staggeredGridLayoutManager = new ExStaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
         //GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
         //LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getBaseContext(), LinearLayoutManager.VERTICAL, true);// 可替换
         waterFallRcv.setLayoutManager(staggeredGridLayoutManager);
@@ -188,7 +202,7 @@ public class RecyListViewLoadActivity extends AppCompatActivity {
                     Log.d(TAG, "loading old data");
                     getData();
 //                    mDataManager.loadOldData(AaaActivity.this);
-                    footerBtn.setVisibility(View.VISIBLE);
+                    loadModel.setVisibility(View.VISIBLE);
                 }
             }
 
@@ -207,8 +221,8 @@ public class RecyListViewLoadActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(RecyListViewLoadActivity.this, "on click", Toast.LENGTH_SHORT).show();
-//                mDataManager.getData().remove(position);
-//                waterFallAdapter.updateData(mDataManager.getData());
+                imgs.remove(position);
+                waterFallAdapter.updateData(imgs);
             }
         });
         waterFallRcv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -219,7 +233,9 @@ public class RecyListViewLoadActivity extends AppCompatActivity {
                 return true;
             }
         });
+
         waterFallRcv.setAdapter(waterFallAdapter);
+        getData();
     }
 
     private float headerHeight;
@@ -249,8 +265,8 @@ public class RecyListViewLoadActivity extends AppCompatActivity {
      * 设置底部的view
      */
     private void setFooterView() {
-        footerBtn.setText("正在加载...");
-        footerBtn.getBackground().setAlpha(80);
+//        progressBar.setText("正在加载...");
+//        progressBar.getBackground().setAlpha(80);
     }
 
 
@@ -297,6 +313,9 @@ public class RecyListViewLoadActivity extends AppCompatActivity {
         return toolbarHeight;
     }
     private void getData() {
+        pull_to_refresh_load_relativelayout.setVisibility(View.VISIBLE);
+        button_load_button.setVisibility(View.GONE);
+
         new Thread() {
             @Override
             public void run() {
@@ -320,11 +339,18 @@ public class RecyListViewLoadActivity extends AppCompatActivity {
                                 if (isLoadMore) {
                                     isLoadMore = false;
                                 }
+                                pn = pn + rn;
+                                isLoadingData = false;
                                 imgs.addAll(img);
                                 waterFallAdapter.updateData(imgs);
+                                swipeRefreshLayout.setRefreshing(false);
+                                pull_to_refresh_load_relativelayout.setVisibility(View.GONE);
+                                button_load_button.setVisibility(View.VISIBLE);
                             } else {
+
                             }
                         } else {
+
                         }
                     }
                 });
@@ -346,6 +372,7 @@ public class RecyListViewLoadActivity extends AppCompatActivity {
                 case BeautyMainVo.Imgs.FIRST:
                     return new waterFallOrangeItem();
                 case BeautyMainVo.Imgs.Second:
+                    return new waterFallWhiteItem();
                 default:
                     return new waterFallWhiteItem();
             }
