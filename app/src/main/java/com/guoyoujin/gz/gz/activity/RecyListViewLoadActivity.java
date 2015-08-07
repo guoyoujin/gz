@@ -1,6 +1,7 @@
 package com.guoyoujin.gz.gz.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.os.Handler;
@@ -202,7 +203,7 @@ public class RecyListViewLoadActivity extends AppCompatActivity {
             @Override
             public void onBottom() {
                 //Log.d(TAG, "on bottom");
-                Toast.makeText(RecyListViewLoadActivity.this, "bottom", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(RecyListViewLoadActivity.this, "bottom", Toast.LENGTH_SHORT).show();
                 // 到底部自动加载
                 if (!isLoadingData) {
                     isLoadingData = true;
@@ -227,9 +228,19 @@ public class RecyListViewLoadActivity extends AppCompatActivity {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(RecyListViewLoadActivity.this, "on click", Toast.LENGTH_SHORT).show();
-                imgs.remove(position);
-                waterFallAdapter.updateData(imgs);
+//                Toast.makeText(RecyListViewLoadActivity.this, "on click", Toast.LENGTH_SHORT).show();
+//                imgs.remove(position);
+//                waterFallAdapter.updateData(imgs);
+                if(position == 0) return;
+                    Intent intent = new Intent();
+                    intent.setClass(RecyListViewLoadActivity.this, BeautyPhotoDetailsActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("position", position);
+                    bundle.putSerializable("imgs", imgs);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                    RecyListViewLoadActivity.this.overridePendingTransition(R.anim.abc_fade_in,
+                            R.anim.abc_fade_out);
             }
         });
         waterFallRcv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
