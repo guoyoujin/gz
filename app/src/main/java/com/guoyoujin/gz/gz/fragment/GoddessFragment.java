@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.guoyoujin.gz.gz.R;
-import com.guoyoujin.gz.gz.activity.ContentActivity;
+import com.guoyoujin.gz.gz.activity.RecyListViewLoadActivity;
 
 /**
  * Created by guoyoujin on 15/6/17.
@@ -200,7 +200,7 @@ public class GoddessFragment extends Fragment implements View.OnClickListener {
                 grilTag = tags[23];
                 break;
         }
-        Intent intent = new Intent(getActivity(), ContentActivity.class);
+        Intent intent = new Intent(getActivity(), RecyListViewLoadActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString("GRILTAG", grilTag);
         intent.putExtras(bundle);
