@@ -90,6 +90,7 @@ public class RecyListViewLoadActivity extends AppCompatActivity {
         window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         setContentView(R.layout.activity_recy_list_view_load);
         mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
+        mToolbar.setNavigationIcon(getResources().getDrawable(R.drawable.abc_ic_ab_back_mtrl_am_alpha));
         mToolbar.setTitle(getResources().getString(R.string.app_name));//使用此方法一定要在 setSupportActionBar(mToolbar);方法之前
 //        mToolbar.setSubtitle("1副标题");
         setSupportActionBar(mToolbar);
@@ -105,6 +106,12 @@ public class RecyListViewLoadActivity extends AppCompatActivity {
         floatIV = (ImageView) findViewById(R.id.float_imageButton);
         initLoadModel() ;
         setViews();
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();;
+            }
+        });
     }
     protected void setViews() {
         setFloatIv();
